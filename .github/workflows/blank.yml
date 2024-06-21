@@ -17,18 +17,25 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Log checkout completion time
         run: echo "Checkout completed at $(date -u)"
 
       - name: Set up Python environment
         uses: actions/setup-python@v2
         with:
           python-version: '3.11.8'
+
+      - name: Log Python setup completion time
         run: echo "Python environment setup completed at $(date -u)"
 
       - name: install
         run: |
           pip install requests curl_cffi
           echo "Install completed at $(date -u)"
+
+      - name: Log install completion time
+        run: echo "Install completed at $(date -u)"
 
       - name: run
         env:
@@ -40,3 +47,6 @@ jobs:
           echo "Script started at $(date -u)"
           python nodeseek_sign.py
           echo "Script completed at $(date -u)"
+
+      - name: Log the end time
+        run: echo "Job completed at $(date -u)"
